@@ -42,9 +42,9 @@ jobs:
     - name: Test with pytest
       run: |
         pytest > output/pytest.txt
-    - name: PR Comment from File
-      uses: machine-learning-apps/pr-comment@1.0.0
+    - name: comment PR
+      uses: machine-learning-apps/pr-comment@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          path: results/pytest.txt
+      with:
+        path: results/pytest.txt
