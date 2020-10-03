@@ -36,12 +36,15 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements/local.txt; fi
       - name: Run Pytest
         run: pytest
-      - uses: trilom/file-changes-action@v1.2.3
-        id: file_changes
+      - uses: tony84727/changed-file-filter@0.0.3
+        id: filter
         with:
           output: ' '
+          filters: |
+            py:
+              - '**/*.py'
       - name: test
         run: |
-          echo '${{ steps.file_changes.outputs.files}}'
+          echo '${{ steps.filter.outputs.py }}'
       - name: Run Pylint
-        run: pylint ${{ steps.file_changes.outputs.files}}
+        run: pylint ${{ steps.filter.outputs.py }}
