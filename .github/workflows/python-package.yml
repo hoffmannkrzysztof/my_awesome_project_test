@@ -40,7 +40,7 @@ jobs:
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements/local.txt; fi
     - name: wemake-python-styleguide
-      uses: wemake-services/wemake-python-styleguide
+      uses: wemake-services/wemake-python-styleguide@0.14.1
       with:
         reporter: 'github-pr-review'
       env:
