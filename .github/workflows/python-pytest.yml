@@ -36,14 +36,5 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements/local.txt; fi
       - name: Run Pytest
         run: pytest
-      - uses: tony84727/changed-file-filter@0.0.3
-        id: filter
-        with:
-          filters: |
-            py:
-              - '**/*.py'
-      - name: test
-        run: |
-          echo '${{ steps.filter.outputs.py }}'
-      - name: Run Pylint
-        run: pylint ${{ steps.filter.outputs.py }}
+      - name: Python Pylin GitHub Action
+        uses: vcoder4c/git_pylint@v1
