@@ -39,7 +39,6 @@ jobs:
       - uses: tony84727/changed-file-filter@0.0.3
         id: filter
         with:
-          output: ' '
           filters: |
             py:
               - '**/*.py'
