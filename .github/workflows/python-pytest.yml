@@ -1,11 +1,6 @@
-# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
-
-name: Python package
+name: Python Pytest
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -39,4 +34,5 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements/local.txt; fi
-    - uses: ricardochaves/python-lint@v1.3.0
+    - name: Run Pytest
+      run: pytest
