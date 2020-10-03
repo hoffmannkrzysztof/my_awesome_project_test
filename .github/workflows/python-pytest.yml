@@ -44,4 +44,4 @@ jobs:
         run: |
           echo '${{ steps.file_changes.outputs.files}}'
       - name: Run Pylint
-          run: pylint ${{ steps.file_changes.outputs.files}}
+        run: pylint ${{ steps.file_changes.outputs.files}}
