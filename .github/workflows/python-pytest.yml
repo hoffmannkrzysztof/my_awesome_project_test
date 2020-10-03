@@ -36,3 +36,10 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements/local.txt; fi
     - name: Run Pytest
       run: pytest
+      uses: trilom/file-changes-action@v1.2.3
+      - id: file_changes
+      with:
+        output: ' '
+    - name: test
+      run: |
+        echo '${{ steps.file_changes.outputs.files}}'
