@@ -37,7 +37,7 @@ jobs:
       - name: Run Pytest
         run: pytest
       - uses: trilom/file-changes-action@v1.2.3
-      - id: file_changes
+        id: file_changes
         with:
           output: ' '
       - name: test
