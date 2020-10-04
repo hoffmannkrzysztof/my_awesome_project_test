@@ -36,5 +36,15 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements/local.txt; fi
       - name: Run Pytest
         run: pytest
-      - name: Python Pylin GitHub Action
-        uses: vcoder4c/git_pylint@v1
+      - uses: 8BitJonny/gh-get-current-pr@v1
+        id: PR
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          // Only return if PR is still open
+          filterOutClosed: true
+      - run: echo "Your PR is ${prNumber} and its JSON is ${prJSON}"
+        if: success() && steps.PR.outputs.number
+        env:
+          prNumber: ${{ steps.PR.outputs.number }}
+          // JSON object with the full PR object
+          prJSON: ${{ steps.PR.outputs.pr }
