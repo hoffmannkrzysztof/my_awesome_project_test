@@ -41,5 +41,7 @@ jobs:
         uses: jitterbit/get-changed-files@v1
       - run: |
           echo ::set-env name=FOO::$(pylint `find ${{ steps.files.outputs.added_modified }} -type f -name "*.py"`)
-      - run: |
-          echo $FOO
+      - uses: JoseThen/comment-pr@v1
+      with:
+        comment: $FOO
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
