@@ -43,7 +43,7 @@ jobs:
           echo ::set-env name=FOO::$(pylint `find ${{ steps.files.outputs.added_modified }} -type f -name "*.py"`)
       - uses: mshick/add-pr-comment@v1
         with:
-          message: $FOO
+          message: echo $FOO
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
           allow-repeats: false # This is the default
