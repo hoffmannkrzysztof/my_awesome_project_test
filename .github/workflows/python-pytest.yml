@@ -40,4 +40,6 @@ jobs:
         name: Run Pylint
         uses: jitterbit/get-changed-files@v1
       - run: |
-          pylint `find ${{ steps.files.outputs.added_modified }} -type f -name "*.py"`
+          echo ::set-env name=FOO::$(pylint `find ${{ steps.files.outputs.added_modified }} -type f -name "*.py"`)
+      - run: |
+          echo $FOO
