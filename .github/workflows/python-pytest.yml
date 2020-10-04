@@ -41,7 +41,9 @@ jobs:
         uses: jitterbit/get-changed-files@v1
       - run: |
           echo ::set-env name=FOO::$(pylint `find ${{ steps.files.outputs.added_modified }} -type f -name "*.py"`)
-      - uses: JoseThen/comment-pr@v1
-      with:
-        comment: $FOO
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: mshick/add-pr-comment@v1
+        with:
+          message: ${{ FOO }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
+          allow-repeats: false # This is the default
