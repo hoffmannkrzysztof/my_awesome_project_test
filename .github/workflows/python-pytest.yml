@@ -36,12 +36,9 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements/local.txt; fi
       - name: Run Pytest
         run: pytest
-      - uses: 8BitJonny/gh-get-current-pr@1.0.1
-        id: PR
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          filterOutClosed: true
-      - run: echo "Your PR is ${prNumber} and its JSON is ${prJSON}"
-        env:
-          prNumber: ${{ steps.PR.outputs.number }}
-          prJSON: ${{ steps.PR.outputs.pr }}
+      - id: files
+        uses: jitterbit/get-changed-files@v1
+      - run: |
+          for changed_file in ${{ steps.files.outputs.all }}; do
+            echo "Do something with this ${changed_file}."
+          done
