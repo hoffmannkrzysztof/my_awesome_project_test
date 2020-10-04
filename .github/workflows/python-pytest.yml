@@ -36,7 +36,7 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements/local.txt; fi
       - name: Run Pytest
         run: pytest
-      - uses: 8BitJonny/gh-get-current-pr@v1
+      - uses: 8BitJonny/gh-get-current-pr@1.0.1
         id: PR
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
